@@ -1,0 +1,79 @@
+/* Design Tokens - CSS Custom Properties */
+
+:root {
+  /* Colors - From basic-rules */
+  --color-accent: #DAA3FF;        /* lavender pink */
+  --color-background: #150A35;    /* cetacean blue */
+  --color-text: #f5f7fc;          /* ghost white */
+  --color-card-bg: rgba(218, 163, 255, 0.05);  /* subtle accent tint */
+  --color-border: rgba(218, 163, 255, 0.2);    /* subtle accent border */
+  
+  /* Typography */
+  --font-heading: 'Bacasime Antique', serif;
+  --font-body: 'Archivo', sans-serif;
+  
+  /* Type Scale Desktop (1.5) */
+  --text-xs: 0.694rem;
+  --text-sm: 0.833rem;
+  --text-base: 1rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.44rem;
+  --text-2xl: 1.728rem;
+  --text-3xl: 2.074rem;
+  --text-4xl: 2.488rem;
+  --text-5xl: 2.986rem;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  
+  /* Layout */
+  --container-max: 1200px;
+  --content-max: 800px;
+  --gap: 2rem;
+  
+  /* Transitions */
+  --transition-fast: 200ms ease;
+  --transition-medium: 300ms ease;
+}
+
+/* Tablet Type Scale (1.414) - Intermediate scale */
+@media (max-width: 1023px) and (min-width: 768px) {
+  :root {
+    --text-xs: 0.707rem;
+    --text-sm: 0.841rem;
+    --text-base: 1rem;
+    --text-lg: 1.189rem;
+    --text-xl: 1.414rem;
+    --text-2xl: 1.999rem;
+    --text-3xl: 2.827rem;
+    --text-4xl: 3.998rem;
+    --text-5xl: 5.653rem;
+    
+    /* Adjust spacing for tablet */
+    --gap: 1.5rem;
+  }
+}
+
+/* Mobile Type Scale (1.333) */
+@media (max-width: 767px) {
+  :root {
+    --text-xs: 0.75rem;
+    --text-sm: 0.889rem;
+    --text-base: 1rem;
+    --text-lg: 1.185rem;
+    --text-xl: 1.58rem;
+    --text-2xl: 2.11rem;
+    --text-3xl: 2.81rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+    
+    /* Adjust spacing for mobile */
+    --gap: 1.25rem;
+  }
+}

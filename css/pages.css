@@ -16,7 +16,6 @@
 
 .about-philosophy {
   padding: var(--space-3xl) 0;
-  background: var(--color-card-bg);
 }
 
 .philosophy-statement {
@@ -288,7 +287,6 @@
 /* Services Section - Home Page */
 .services-section {
   padding: var(--space-3xl) 0;
-  background: var(--color-card-bg);
 }
 
 .services-section h2 {
@@ -310,7 +308,6 @@
 .cta-section {
   padding: var(--space-3xl) 0;
   text-align: center;
-  background: var(--color-card-bg);
 }
 .cta-section h2 {
   margin-bottom: var(--space-md);

@@ -1,0 +1,14 @@
+{
+  "name": "eventura-creations",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"pnpm --filter eventura-server dev\" \"pnpm --filter eventura-client dev\"",
+    "build": "pnpm --filter eventura-client build",
+    "start": "NODE_ENV=production pnpm --filter eventura-server start",
+    "seed": "pnpm --filter eventura-server seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

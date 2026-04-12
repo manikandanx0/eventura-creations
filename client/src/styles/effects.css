@@ -1,0 +1,537 @@
+/* =============================================
+   EVENTURA CREATIONS — EFFECTS & ANIMATIONS
+   Premium background effects, micro-animations,
+   and scroll-triggered transitions.
+   ============================================= */
+
+/* ─── Keyframes ─────────────────────────────── */
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  33%       { transform: translateY(-22px) scale(1.03); }
+  66%       { transform: translateY(10px) scale(0.97); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-14px) rotate(4deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(1.08); }
+}
+
+@keyframes drift-x {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(30px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes shimmer-border {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes counter-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.9; }
+}
+
+@keyframes orb-rotate {
+  0%   { transform: rotate(0deg) translateX(60px); }
+  100% { transform: rotate(360deg) translateX(60px); }
+}
+
+@keyframes nav-blur-in {
+  from { backdrop-filter: blur(0px); background-color: rgba(6, 9, 13, 0); }
+  to   { backdrop-filter: blur(16px); background-color: var(--fx-nav-scrim); }
+}
+
+/* ─── Canvas Particle Background ────────────── */
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Hero Section Ambient Orbs ─────────────── */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Smooth fade at the bottom — no hard edge */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Large blurred orb — top-left */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -180px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--fx-18) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Medium blurred orb — bottom-right */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--fx-12) 0%, var(--fx-teal-12) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 18s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Services Section Glow Haze ────────────── */
+
+.services-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--fx-07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse-glow 8s ease-in-out infinite;
+}
+
+.services-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Metrics Section Ambient Layer ─────────── */
+
+.metrics-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.metrics-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, var(--fx-09) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 50%, var(--fx-06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift-x 12s ease-in-out infinite;
+}
+
+.metrics-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Projects Section Subtle Bloom ─────────── */
+
+.projects-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--fx-08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse-glow 10s ease-in-out infinite alternate;
+}
+
+.projects-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── CTA Section Glow ───────────────────────── */
+
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 100% at 50% 50%, var(--fx-10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.cta-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Scroll-Reveal Animations ───────────────── */
+
+/* Elements start hidden; JS adds .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.4s; }
+
+/* Scale variant */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Card Shimmer Border on Hover ───────────── */
+
+.service-card,
+.project-card,
+.differentiator {
+  position: relative;
+  overflow: hidden; /* Required for shimmer clipping */
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+
+.service-card:hover,
+.project-card:hover,
+.differentiator:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 30px var(--fx-12),
+    0 0 1px var(--fx-40) inset;
+  border-color: var(--fx-60);
+}
+
+/* Shimmer sweep across card top-edge on hover.
+   Uses ::before (not ::after) to avoid conflicts
+   with existing ::after pseudo-elements. */
+.service-card::before,
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--fx-90), transparent);
+  transition: left 0.55s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.service-card:hover::before,
+.project-card:hover::before {
+  left: 160%;
+}
+
+/* ─── Navigation Glassmorphism on Scroll ─────── */
+
+.main-nav {
+  transition: background-color 0.4s ease,
+              backdrop-filter 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.main-nav.is-scrolled {
+  background-color: var(--fx-nav-scrim);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom-color: var(--fx-15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Hero Title Text Glow ───────────────────── */
+
+.hero-title {
+  text-shadow:
+    0 0 40px var(--fx-25),
+    0 0 80px var(--fx-08);
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-tagline {
+  animation: fade-up 0.9s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero .intro-text {
+  animation: fade-up 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-cta {
+  animation: fade-up 0.9s 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── Button Animations ──────────────────────── */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--fx-30);
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+/* ─── Metric Numbers Glow Pulse ──────────────── */
+
+.metric-number {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 12px var(--fx-40));
+}
+
+.metric-item:hover .metric-number {
+  animation: counter-pop 0.4s ease forwards;
+  filter: drop-shadow(0 0 20px var(--fx-70));
+}
+
+/* ─── Footer Shimmer Line ────────────────────── */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--fx-05) 20%,
+    var(--fx-40) 50%,
+    var(--fx-05) 80%,
+    transparent 100%
+  );
+  animation: shimmer-border 5s linear infinite;
+  background-size: 200% auto;
+}
+
+/* ─── Nav Link Underline Grow ────────────────── */
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--fx-40));
+  border-radius: 1px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background: var(--color-accent);
+}
+
+/* ─── Star Field Overlay on Hero ─────────────── */
+
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-stars span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  animation: star-twinkle var(--dur, 3s) var(--delay, 0s) ease-in-out infinite;
+}
+
+/* ─── Section headings highlight ─────────────── */
+
+h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.services-section h2,
+.projects-section h2,
+.metrics-section h3,
+.cta-section h2 {
+  display: block;
+}
+
+/* ─── Page-level subtle noise texture ───────── */
+/* A very faint layered radial makes the flat bg
+   look richer without being distracting. */
+
+/* Prevent any overflowing effects from creating horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, var(--fx-06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 85%, var(--fx-05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 50% 50%, var(--fx-deep-vignette) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ─── Reduced-motion overrides ───────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+}
